@@ -44,6 +44,12 @@ To run this project locally, ensure you have the following software installed:
 
 After setting up, the platform should be accessible at `http://localhost:3000`.
 
+## Live Demo
+
+You can access the live version of AgroLink at:
+
+[https://agrolink-1s2r.onrender.com/](https://agrolink-1s2r.onrender.com/)
+
 ## Usage
 
 - **For Farmers**: AgroLink allows farmers to access, share, rent, or monetize agricultural machinery in a hassle-free manner.
@@ -77,4 +83,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 - Special thanks to all contributors and collaborators.
 - We also acknowledge the many experts, institutions, and organizations that are working towards improving agricultural practices globally.
-
