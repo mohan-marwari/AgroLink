@@ -1,0 +1,39 @@
+<% layout('/layouts/boilerplate') %> <%- include('./filter') %>
+
+<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mt-3">
+  <% for(let listing of allListings) { %>
+  <a href="/listings/<%= listing._id %>" class="listing-link">
+    <div class="card col listing-card">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="listing-image"
+        style="height: 20rem"
+      />
+      <!-- Overlay for image -->
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %></b> <br />
+          &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") :
+          'N/A' %>/night
+          <span class="tax-info text-muted"> (Incl. ₹180 Tax) </span>
+        </p>
+      </div>
+    </div>
+  </a>
+  <% } %>
+</div>
+
+<script>
+  // JavaScript for Toggle Functionality
+  const taxSwitch = document.getElementById("taxToggle");
+  const taxInfoElements = document.querySelectorAll(".tax-info");
+
+  taxSwitch.addEventListener("change", () => {
+    const showTax = taxSwitch.checked;
+    taxInfoElements.forEach((element) => {
+      element.style.display = showTax ? "inline" : "none";
+    });
+  });
+</script>

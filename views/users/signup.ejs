@@ -1,0 +1,13 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container d-flex justify-content-center align-items-center">
+    <form action="/signup" method="POST" class="p-4 border rounded bg-light needs-validation" novalidate style="width: 100%; max-width: 400px;">
+        <h4 class="mb-3 text-center">Sign Up</h4>
+        <input type="text" class="form-control mb-2" name="username" placeholder="Username" required>
+        <input type="email" class="form-control mb-2" name="email" placeholder="Email" required>
+        <input type="password" class="form-control mb-3" name="password" placeholder="Password" required>
+        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        <p class="text-center mt-2">
+            <small>Already have an account? <a href="/login">Log in</a></small>
+        </p>
+    </form>
+</div>      
