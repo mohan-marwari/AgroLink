@@ -24,7 +24,6 @@ main()
 
 async function main() {
   await mongoose.connect(dbUrl);
-  // await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
 app.set("view engine", "ejs");
@@ -77,7 +76,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.websiteName = "Wanderlust";
+  res.locals.websiteName = "AgroLink";
   res.locals.currUser = req.user;
   res.locals.mapToken = process.env.MAPBOX_TOKEN;
   next();
@@ -110,3 +109,5 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log("server is listing to port 8080");
 });
+git add .
+git commit -m "Updated DB connection logic and deployment settings. Added .gitignore to exclude sensitive files"
