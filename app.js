@@ -109,5 +109,3 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log("server is listing to port 8080");
 });
-git add .
-git commit -m "Updated DB connection logic and deployment settings. Added .gitignore to exclude sensitive files"
