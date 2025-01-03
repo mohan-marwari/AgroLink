@@ -15,10 +15,11 @@
       <div class="card-body">
         <p class="card-text">
           <b><%= listing.title %></b> <br />
-          &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") :
-          'N/A' %>/night
-          <span class="tax-info text-muted"> (Incl. ₹180 Tax) </span>
-        </p>
+          &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : 'N/A' %>
+          <span class="unit-info text-muted"> (per day)</span>
+          <br />
+          <span class="tax-info text-muted"> (Incl. applicable taxes)</span>
+        </p>        
       </div>
     </div>
   </a>
