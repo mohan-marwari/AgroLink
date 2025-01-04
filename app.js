@@ -1,5 +1,5 @@
-if (process.env.NODE_ENV != "production") {
-  require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config(); // .env file se variables load karne ke liye
 }
 
 const express = require("express");
@@ -16,8 +16,13 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-// connect db
-const dbUrl = process.env.ATLASDB_URL;
+// Check if NODE_ENV is production (Atlas) or development (local)
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.ATLASDB_URL // Use Atlas DB URL for production
+    : process.env.MONGO_URI_LOCAL; // Use local DB for development
+
+// MongoDB connection
 main()
   .then(() => console.log("DB Connected"))
   .catch((err) => console.log(err));
@@ -26,6 +31,7 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
+// Other setup code (Express, Passport, session, etc.)
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
@@ -55,7 +61,7 @@ const sessionOptions = {
   cookie: {
     expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    secure: false,
+    secure: false, // Use true if your app is running on HTTPS
     httpOnly: true,
   },
 };
@@ -66,10 +72,8 @@ app.use(passport.session());
 
 app.use(flash());
 
-// use static authenticate method of model in LocalStrategy
+// Passport Setup
 passport.use(new localStrategy(User.authenticate()));
-
-// use static serialize and deserialize of model for passport session support
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -77,28 +81,28 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.websiteName = "AgroLink";
-  res.locals.currUser = req.user;
+  res.locals.currUser = req.user || null;
   res.locals.mapToken = process.env.MAPBOX_TOKEN;
   next();
 });
 
+// Routes setup
 const homeRouter = require("./routes/home");
 const listingsRouter = require("./routes/listing");
 const reviewsRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 
-// routes
 app.use("/listings", listingsRouter);
 app.use("/", reviewsRouter);
 app.use("/", homeRouter);
 app.use("/", userRouter);
 
-// Middleware
+// Middleware to handle 404 errors
 app.all("*", (req, res, next) => {
   next(new expressError(404, "Page Not Found!"));
 });
 
-// Error Hadler route
+// Error Handler route
 app.use((err, req, res, next) => {
   console.error("Error Stack:", err.stack); // Full error stack for debugging
   console.log("Error Message:", err.message);

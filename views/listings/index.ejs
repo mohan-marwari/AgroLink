@@ -8,18 +8,28 @@
         src="<%= listing.image.url %>"
         class="card-img-top"
         alt="listing-image"
-        style="height: 20rem"
+        style="height: 18rem"
       />
       <!-- Overlay for image -->
       <div class="card-img-overlay"></div>
       <div class="card-body">
-        <p class="card-text">
-          <b><%= listing.title %></b> <br />
-          &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : 'N/A' %>
-          <span class="unit-info text-muted"> (per day)</span>
-          <br />
-          <span class="tax-info text-muted"> (Incl. applicable taxes)</span>
-        </p>        
+        <div>
+          <p class="card-text fs-5 mb-0">
+            <strong><%= listing.title %></strong>
+          </p>
+        </div>
+
+        <div>
+          <p class="card-text mb-3"><%= listing.location %></p>
+        </div>
+
+        <!-- <div class="fs-5 fw-bold mb-2"><%= listing.title %></div>
+          <div class="mb-2"><%= listing.location %></div> -->
+        <div class="card-text fw-bold fs-5">
+          <%= listing.price ? listing.price.toLocaleString("en-IN") : 'N/A' %>
+          <span class="unit-info"> / kg</span>
+          <span class="tax-info text-muted"> &nbsp; + 18% GST </span>
+        </div>
       </div>
     </div>
   </a>

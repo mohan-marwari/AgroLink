@@ -1,7 +1,7 @@
 <nav
 class="navbar border-bottom navbar-expand-md bg-body-light sticky-top"
 >
-  <div class="container">
+  <div class="container navbar-togglers">
     <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
     <button
       class="navbar-toggler"
@@ -14,9 +14,9 @@ class="navbar border-bottom navbar-expand-md bg-body-light sticky-top"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
+    <div class="collapse navbar-collapse align-items-baseline " id="navbarNavAltMarkup" >
+      <div class="navbar-nav me-auto mb-2">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/listings">Explore</a>
         <a class="nav-link" href="/listings/new ">Add New Listing</a>
       </div>
@@ -34,7 +34,7 @@ class="navbar border-bottom navbar-expand-md bg-body-light sticky-top"
         </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link mt-2" href="/listings/new">Airbnb Your Home</a>
+        <a class="nav-link mt-2" href="/listings/new">AgroLink Your Home</a>
         <% if (!currUser) { %>
         <a class="nav-link me-2" href="/signup">
           <button class="btn btn-outline-danger">Sign Up</button>
