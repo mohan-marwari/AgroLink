@@ -18,4 +18,31 @@
     })
   })()
 
+  // filter script for listing page 
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const filters = document.getElementById("filters");
+    const scrollLeft = document.getElementById("scrollLeft");
+    const scrollRight = document.getElementById("scrollRight");
+  
+    // Show/Hide Buttons based on scroll position
+    const updateScrollButtons = () => {
+      const maxScrollLeft = filters.scrollWidth - filters.clientWidth;
+      scrollLeft.classList.toggle("d-none", filters.scrollLeft <= 0);
+      scrollRight.classList.toggle("d-none", filters.scrollLeft >= maxScrollLeft);
+    };
+  
+    scrollLeft.addEventListener("click", () => {
+      filters.scrollBy({ left: -200, behavior: "smooth" });
+    });
+  
+    scrollRight.addEventListener("click", () => {
+      filters.scrollBy({ left: 200, behavior: "smooth" });
+    });
+  
+    filters.addEventListener("scroll", updateScrollButtons);
+  
+    // Initial check for buttons
+    updateScrollButtons();
+  });
   
