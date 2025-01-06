@@ -9,7 +9,7 @@
 
 #filters {
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
 }
 
@@ -65,4 +65,53 @@
 
 #tax-info {
  display: none;
+}
+
+
+/* New Style  */
+
+/* .filter-section {
+  position: relative;
+  padding: 10px 0;
+} */
+
+.filters {
+  white-space: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter {
+  flex: 0 0 auto;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.scroll-btn.left-scroll {
+  left: 0;
+}
+
+.scroll-btn.right-scroll {
+  right: 0;
 }
