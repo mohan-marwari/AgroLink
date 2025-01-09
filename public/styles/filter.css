@@ -1,9 +1,9 @@
-.filter-section {
+/* .filter-section {
   position: sticky;
   top: 46px;
   z-index: 1;
   background-color: rgba(255, 255, 255, 1);
-  /* backdrop-filter: blur(10px); */
+  backdrop-filter: blur(10px);
   padding: .5rem 0 0.5rem 0;
 }
 
@@ -13,13 +13,13 @@
   gap: 1rem;
 }
 
-/* Filter item ke liye */
+
 .filter {
   position: relative;
   text-align: center;
   opacity: 0.7;
   transition: opacity 0.3s ease;
-  flex: 1 1 0%; /* Flex grow and shrink, width will be equally distributed */
+  flex: 1 1 0%; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,6 @@
 }
 
 .tax-toggle {
-  /* border: 1px solid black; */
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   display: flex;
@@ -65,20 +64,31 @@
 
 #tax-info {
  display: none;
-}
-
-
-/* New Style  */
-
-/* .filter-section {
-  position: relative;
-  padding: 10px 0;
 } */
 
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 46px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0 0.5rem 0;
+}
+
 .filters {
+  display: flex;
   white-space: nowrap;
   overflow-x: auto;
   scroll-behavior: smooth;
+  padding: 10px 0;
+  position: relative;
+
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
 
 .filters::-webkit-scrollbar {
@@ -86,9 +96,39 @@
 }
 
 .filter {
-  flex: 0 0 auto;
-  margin-right: 15px;
   text-align: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  flex: 1 1 0%;
+
+  flex: 0 0 auto;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+}
+
+.filter.active {
+  border-bottom: 2px solid #000000;
+  opacity: 1;
+}
+
+.filter:hover {
+  opacity: 0.67;
+  cursor: pointer;
+  border-bottom: 2px solid #555;
+}
+
+.filter i {
+  font-size: 1.25rem;
+  color: #000000;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.filter p {
+  font-size: 0.8rem;
+  margin: 0.25rem;
 }
 
 .scroll-btn {
@@ -109,9 +149,26 @@
 }
 
 .scroll-btn.left-scroll {
-  left: 0;
+  left: 5px;
 }
 
 .scroll-btn.right-scroll {
-  right: 0;
+  right: 5px;
+}
+
+.tax-toggle {
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.tax-toggle label {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+#tax-info {
+  display: none;
 }

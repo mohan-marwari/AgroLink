@@ -18,20 +18,19 @@
     })
   })()
 
-  // filter script for listing page 
-
   document.addEventListener("DOMContentLoaded", function () {
     const filters = document.getElementById("filters");
     const scrollLeft = document.getElementById("scrollLeft");
     const scrollRight = document.getElementById("scrollRight");
   
-    // Show/Hide Buttons based on scroll position
+    // Function to update the visibility of scroll buttons
     const updateScrollButtons = () => {
       const maxScrollLeft = filters.scrollWidth - filters.clientWidth;
       scrollLeft.classList.toggle("d-none", filters.scrollLeft <= 0);
       scrollRight.classList.toggle("d-none", filters.scrollLeft >= maxScrollLeft);
     };
   
+    // Add event listeners for button clicks and scroll
     scrollLeft.addEventListener("click", () => {
       filters.scrollBy({ left: -200, behavior: "smooth" });
     });
@@ -42,7 +41,7 @@
   
     filters.addEventListener("scroll", updateScrollButtons);
   
-    // Initial check for buttons
+    // Initial visibility check
     updateScrollButtons();
   });
   
