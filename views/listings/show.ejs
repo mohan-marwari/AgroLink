@@ -140,9 +140,12 @@
   </div>
   <%} %>
   <!-- Review -->
+  <% if (listing.reviews.length === 0 && !currUser) { %>
+    <a href="/login" class="btn btn-success mb-3">Add a Review</a>
+  <% } %>
   <% if (currUser) { %>
   <div class="mb-3">
-    <hr />
+    
     <h4>Leave a Review</h4>
     <form
       action="/listings/<%= listing.id %>/reviews"
